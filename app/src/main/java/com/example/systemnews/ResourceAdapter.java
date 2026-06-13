@@ -76,9 +76,8 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceAdapter.ViewHo
      * updateUI: Utility method to refresh the rating indicators and review list for an item.
      */
     private void updateUI(ViewHolder holder, Resource resource) {
-        // Display the current average rating as stars and text
+        // Display the current average rating as stars
         holder.ratingBarDisplay.setRating(resource.getAverageRating());
-        holder.tvAvgRating.setText(String.format(Locale.getDefault(), "Average Rating: %.1f", resource.getAverageRating()));
         
         // Compile and display the list of all user reviews
         List<Resource.UserFeedback> feedbacks = resource.getFeedbacks();
@@ -106,7 +105,7 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceAdapter.ViewHo
      * ViewHolder: Inner class that holds references to all views within a single list item layout.
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTitle, tvCategory, tvUrl, tvDescription, tvAvgRating, tvCommentsDisplay;
+        TextView tvTitle, tvCategory, tvUrl, tvDescription, tvCommentsDisplay;
         RatingBar ratingBarDisplay, ratingBarInput;
         EditText etComment;
         Button btnSubmit;
@@ -118,7 +117,6 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceAdapter.ViewHo
             tvCategory = itemView.findViewById(R.id.tv_category);
             tvUrl = itemView.findViewById(R.id.tv_url);
             tvDescription = itemView.findViewById(R.id.tv_description);
-            tvAvgRating = itemView.findViewById(R.id.tv_avg_rating);
             tvCommentsDisplay = itemView.findViewById(R.id.tv_comments_display);
             ratingBarDisplay = itemView.findViewById(R.id.rating_bar);
             ratingBarInput = itemView.findViewById(R.id.rating_bar_input);

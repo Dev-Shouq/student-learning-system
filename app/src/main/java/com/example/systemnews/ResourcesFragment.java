@@ -10,6 +10,7 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
@@ -35,7 +36,12 @@ public class ResourcesFragment extends Fragment {
 
         // Initialize RecyclerView and set its layout manager
         recyclerView = view.findViewById(R.id.rv_resources);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        // Use 1 column for Portrait and 2 columns for Landscape
+        if (getResources().getConfiguration().orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE) {
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        } else {
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        }
 
         // Setup the sorting Spinner with options
         spinnerSort = view.findViewById(R.id.spinner_sort);
